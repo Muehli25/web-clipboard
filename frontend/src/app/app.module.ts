@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialDependencyModule } from 'src/material.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MaterialDependencyModule
   ],
   providers: [],
   bootstrap: [AppComponent]
