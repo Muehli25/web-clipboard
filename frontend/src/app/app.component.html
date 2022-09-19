@@ -1,4 +1,5 @@
-  <mat-form-field class="example-full-width" appearance="fill">
+<mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Clipboard</mat-label>
-    <textarea matInput placeholder=""></textarea>
-  </mat-form-field>
+    <textarea matInput placeholder="" [(ngModel)]=clipboard></textarea>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="saveClipboard()">Save</button>

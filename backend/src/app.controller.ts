@@ -1,24 +1,24 @@
-import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
-import { AppService } from './app.service';
-import { Transfer } from './model/transfer.dto';
+import {Body, Controller, Get, Post} from '@nestjs/common';
+import {AppService} from './app.service';
+import {Transfer} from './model/transfer.dto';
 
-@Controller()
+@Controller("api")
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+    constructor(private readonly appService: AppService) {
+    }
 
-  @Get()
-  getClipboard(): string {
-    return this.appService.getClipboard();
-  }
+    @Get()
+    getClipboard(): Transfer {
+        return this.appService.getClipboard();
+    }
 
-  @Post()
-  setClipboard(@Body() transferDto: Transfer): string {
-    console.log(transferDto)
-    return this.appService.setClipboard(transferDto.value);
-  }
+    @Post()
+    setClipboard(@Body() transferDto: Transfer): Transfer {
+        return this.appService.setClipboard(transferDto.clipboard);
+    }
 
- // @Delete()
- // deleteClipboard(@Body() clipboard: ClipboardDTO): string {
- //   return this.appService.setClipboard(clipboard.text);
- // }
+    // @Delete()
+    // deleteClipboard(@Body() clipboard: ClipboardDTO): string {
+    //   return this.appService.setClipboard(clipboard.text);
+    // }
 }
