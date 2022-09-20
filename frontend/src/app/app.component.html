@@ -13,7 +13,7 @@
 <div class="container">
     <mat-form-field appearance="fill" class="input-style">
         <mat-label>Clipboard</mat-label>
-        <input matInput placeholder="" [(ngModel)]=clipboard />
+        <input matInput placeholder="" [(ngModel)]=clipboard maxlength="150"/>
         <button type="button" mat-icon-button matSuffix [cdkCopyToClipboard]="clipboard">
             <mat-icon>content_copy</mat-icon>
         </button>
