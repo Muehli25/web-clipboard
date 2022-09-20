@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  frontend:
+    build: frontend/
+  backend:
+    build: backend/
+  proxy:
+    image: caddy
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
