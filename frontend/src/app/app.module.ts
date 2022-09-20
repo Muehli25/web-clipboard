@@ -5,8 +5,9 @@ import {AppComponent} from './app.component';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialDependencyModule} from 'src/material.module';
 import {HttpClientModule} from "@angular/common/http";
-import {MatButtonModule} from "@angular/material/button";
 import {FormsModule} from "@angular/forms";
+import {ClipboardModule} from "@angular/cdk/clipboard";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
     declarations: [
@@ -16,8 +17,10 @@ import {FormsModule} from "@angular/forms";
         BrowserModule,
         HttpClientModule,
         NoopAnimationsModule,
+        ClipboardModule,
         MaterialDependencyModule,
-        FormsModule
+        FormsModule,
+        MatTooltipModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,5 +1,24 @@
-<mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Clipboard</mat-label>
-    <textarea matInput placeholder="" [(ngModel)]=clipboard></textarea>
-</mat-form-field>
-<button mat-raised-button color="primary" (click)="saveClipboard()">Save</button>
+<p>
+    <mat-toolbar color="primary">
+        <span>Web-Clipboard</span>
+        <span class="spacer"></span>
+        <button
+            mat-icon-button
+            matTooltip="Go to sourcecode"
+            (click)="showSourceCode()">
+            <mat-icon svgIcon="github"></mat-icon>
+        </button>
+    </mat-toolbar>
+</p>
+<div class="container">
+    <mat-form-field appearance="fill" class="input-style">
+        <mat-label>Clipboard</mat-label>
+        <input matInput placeholder="" [(ngModel)]=clipboard />
+        <button type="button" mat-icon-button matSuffix [cdkCopyToClipboard]="clipboard">
+            <mat-icon>content_copy</mat-icon>
+        </button>
+    </mat-form-field>
+    <br/>
+    <button mat-raised-button color="primary" (click)="saveClipboard()">Save</button>
+    <br/>
+</div>
