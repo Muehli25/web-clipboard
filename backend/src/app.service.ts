@@ -21,7 +21,7 @@ export class AppService {
             return result
         }
         this.deleteClipboard()
-        return new Transfer("Wrong token", token);
+        return new Transfer("", token);
     }
 
     setClipboard(clipboard: string): Transfer {

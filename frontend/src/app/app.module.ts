@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {ClipboardModule} from "@angular/cdk/clipboard";
 import {TokenDialogComponent} from './token-dialog/token-dialog.component';
 import {QRCodeModule} from "angularx-qrcode";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import {QRCodeModule} from "angularx-qrcode";
     ],
     imports: [
         BrowserModule,
+        RouterModule.forRoot([]),
         QRCodeModule,
         HttpClientModule,
         NoopAnimationsModule,
