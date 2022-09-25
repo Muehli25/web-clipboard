@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {ClipboardService} from "./clipboard.service";
 import {MatIconRegistry} from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
+import {MatDialog} from "@angular/material/dialog";
+import {TokenDialogComponent} from "./token-dialog/token-dialog.component";
 
 @Component({
     selector: 'app-root',
@@ -11,7 +13,10 @@ import {DomSanitizer} from "@angular/platform-browser";
 export class AppComponent {
     title = 'web-clipboard';
 
-    constructor(private clipboardService: ClipboardService, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+    constructor(private clipboardService: ClipboardService,
+                private matIconRegistry: MatIconRegistry,
+                private domSanitizer: DomSanitizer,
+                private dialog: MatDialog) {
         this.matIconRegistry.addSvgIcon(
             "github",
             this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/github.svg")
@@ -21,17 +26,28 @@ export class AppComponent {
     clipboard = ""
 
     ngOnInit() {
-        this.clipboardService.getClipboard()
-            .subscribe(response => {
-                this.clipboard = response.clipboard
-            })
+        let currentPath = window.location.pathname
+        if (currentPath != "/") {
+            let token = parseInt(currentPath.substring(1))
+            this.clipboardService.getClipboard(token)
+                .subscribe(response => {
+                    this.clipboard = response.clipboard
+                })
+        }
     }
 
 
     saveClipboard() {
         this.clipboardService.postClipboard(this.clipboard).subscribe(response => {
             this.clipboard = response.clipboard
+            let targetUrl = `${window.location.href}?token=${response.token}`
+            this.dialog.open(TokenDialogComponent, {
+                height: '450px',
+                width: '450px',
+                data: {targetUrl: targetUrl},
+            });
         })
+
     }
 
     showSourceCode() {

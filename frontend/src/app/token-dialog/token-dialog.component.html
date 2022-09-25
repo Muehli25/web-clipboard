@@ -1,0 +1,5 @@
+<div mat-dialog-content class="dialog">
+    <qrcode [qrdata]="data.targetUrl" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+    <br/>
+    <h2>{{data.targetUrl}}</h2>
+</div>

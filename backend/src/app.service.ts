@@ -10,25 +10,36 @@ export class AppService {
     }
 
     clipboard: string = ""
+    token: number = 0
 
     timeOutName = "Delete_Clipboard_Timeout"
 
-    getClipboard(): Transfer {
-        let result = new Transfer(this.clipboard);
+    getClipboard(token: number): Transfer {
+        if (token === this.token) {
+            let result = new Transfer(this.clipboard, this.token);
+            this.deleteClipboard()
+            return result
+        }
         this.deleteClipboard()
-        return result
+        return new Transfer("Wrong token", token);
     }
 
     setClipboard(clipboard: string): Transfer {
         this.clipboard = clipboard
-        // delete after 3 mins if the clipboard is not retrieved.
+        this.token = this.getRandomToken()
+        // delete after 3 minutes if the clipboard is not retrieved.
         this.deleteTimeout(this.timeOutName)
         this.addTimeout(this.timeOutName, 180000)
-        return new Transfer(this.clipboard);
+        return new Transfer(this.clipboard, this.token);
     }
 
     deleteClipboard(): void {
         this.clipboard = ""
+        this.token = 0
+    }
+
+    getRandomToken(): number {
+        return Math.floor((Math.random() * 1000000) + 1);
     }
 
     addTimeout(name: string, milliseconds: number) {

@@ -7,20 +7,22 @@ import {MaterialDependencyModule} from 'src/material.module';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {ClipboardModule} from "@angular/cdk/clipboard";
-import {MatTooltipModule} from "@angular/material/tooltip";
+import {TokenDialogComponent} from './token-dialog/token-dialog.component';
+import {QRCodeModule} from "angularx-qrcode";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        TokenDialogComponent
     ],
     imports: [
         BrowserModule,
+        QRCodeModule,
         HttpClientModule,
         NoopAnimationsModule,
         ClipboardModule,
         MaterialDependencyModule,
-        FormsModule,
-        MatTooltipModule
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

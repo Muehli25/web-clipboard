@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post} from '@nestjs/common';
+import {Body, Controller, Get, Post, Query} from '@nestjs/common';
 import {AppService} from './app.service';
 import {Transfer} from './model/transfer.dto';
 
@@ -8,17 +8,12 @@ export class AppController {
     }
 
     @Get()
-    getClipboard(): Transfer {
-        return this.appService.getClipboard();
+    getClipboard(@Query('token') token): Transfer {
+        return this.appService.getClipboard(parseInt(token));
     }
 
     @Post()
     setClipboard(@Body() transferDto: Transfer): Transfer {
         return this.appService.setClipboard(transferDto.clipboard);
     }
-
-    // @Delete()
-    // deleteClipboard(@Body() clipboard: ClipboardDTO): string {
-    //   return this.appService.setClipboard(clipboard.text);
-    // }
 }

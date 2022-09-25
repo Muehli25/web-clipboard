@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "prod" : "ng build --configuration production",
+    "prod": "ng build --configuration production",
     "test": "ng test"
   },
   "private": true,
@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
     "@fontsource/roboto": "^4.5.8",
+    "angularx-qrcode": "^14.0.0",
     "material-icons": "^1.11.11",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
