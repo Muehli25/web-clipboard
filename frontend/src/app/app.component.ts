@@ -43,7 +43,7 @@ export class AppComponent {
             let targetUrl = `${window.location.href}?token=${response.token}`
             this.dialog.open(TokenDialogComponent, {
                 height: '450px',
-                width: '450px',
+                width: '800px',
                 data: {targetUrl: targetUrl},
             });
         })
