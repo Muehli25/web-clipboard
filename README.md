@@ -2,7 +2,7 @@
 
 ## Frontend
 
-- Angular 14+ 
+- Angular 15+ 
 - Angular Material 
 
 ## Backend
